@@ -6,22 +6,23 @@ import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface CredentialMapper {
-    @Select("SELECT * FROM CREDENTIALS WHERE username = #{userId")
-    User getUserId(Integer userId);
+    @Select("SELECT * FROM CREDENTIALS WHERE userid = #{userId}")
+    Credential[] getCredentialListings(Integer userId);
 
-    @Insert("INSERT INTO CREDENTIALS (username, salt, password, key) VALUES(#{username}, #{salt}, #{password}, #{key}")
-    @Options(useGeneratedKeys = true, keyProperty = "userId")
-    int insert(Credential user);
+    @Insert("INSERT INTO CREDENTIALS (url, username, key, password, userid) " +
+            "VALUES(#{url}, #{userName}, #{key}, #{password}, #{userid})")
+    @Options(useGeneratedKeys = true, keyProperty = "credentialid")
+    int insert(Credential credential);
 
 
-    @Select("SELECT * FROM CREDENTIALS WHERE credentialid = #{credentialId}")
-    Credential getCredential(Integer credentialId);
+    @Select("SELECT * FROM CREDENTIALS WHERE credentialid = #{credentialid}")
+    Credential getCredential(Integer credentialid);
 
     @Delete("DELETE FROM CREDENTIALS WHERE credentialid = #{credentialId}")
-    void deleteCredential(Integer credentialId);
+    void deleteCredential(Integer credentialid);
 
     @Update("UPDATE CREDENTIALS SET url = #{url}, key = #{key}, password = #{password}, username = #{newUserName} WHERE credentialid = #{credentialid}")
-    void updateCredential(Integer credentialId, String newUserName, String url, String key, String password);
+    void updateCredential(Integer credentialid, String newUserName, String url, String key, String password);
 }
 
 

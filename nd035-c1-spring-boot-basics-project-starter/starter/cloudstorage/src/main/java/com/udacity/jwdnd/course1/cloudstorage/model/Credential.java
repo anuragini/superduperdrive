@@ -25,13 +25,19 @@ public class Credential {
 
     public Credential(String newUrl, String userName, String encodedKey, String encryptedPassword) {
     }
-
-    public Integer getCredentialid() {
-        return credentialid;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setCredentialid(Integer credentialid) {
-        this.credentialid = credentialid;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUrl() {
@@ -41,15 +47,6 @@ public class Credential {
     public void setUrl(String url) {
         this.url = url;
     }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getKey() {
         return key;
     }
@@ -58,14 +55,13 @@ public class Credential {
         this.key = key;
     }
 
-    public String getPassword() {
-        return password;
+    public Integer getCredentialid() {
+        return credentialid;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCredentialid(Integer credentialid) {
+        this.credentialid = credentialid;
     }
-
     public Integer getUserid() {
         return userid;
     }
@@ -73,6 +69,7 @@ public class Credential {
     public void setUserid(Integer userid) {
         this.userid = userid;
     }
+
 
 }
 

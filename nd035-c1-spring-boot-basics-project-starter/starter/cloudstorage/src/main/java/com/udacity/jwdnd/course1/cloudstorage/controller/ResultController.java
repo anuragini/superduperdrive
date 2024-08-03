@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Handles requests of the result pages.
+ */
 @Controller
 @RequestMapping("/result")
 public class ResultController {

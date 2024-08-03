@@ -1,34 +1,24 @@
 package com.udacity.jwdnd.course1.cloudstorage.mapper;
 
-import com.udacity.jwdnd.course1.cloudstorage.model.Notes;
+import com.udacity.jwdnd.course1.cloudstorage.model.Note;
 import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface NoteMapper {
 
     @Select("SELECT * FROM NOTES WHERE userid = #{userId}")
-    static Notes[] getNotesForUser(Integer userId) {
-        return null;
-    }
+    Note[] getNotesForUser(Integer userId);
 
-
-    @Insert("INSERT INTO NOTES (title, description, userid) " +
-            "VALUES(#{title}, #{description}, #{userId})")
+    @Insert("INSERT INTO NOTES (title, description, userid) VALUES (#{title}, #{description}, #{userId})")
     @Options(useGeneratedKeys = true, keyProperty = "noteId")
-    int insert(Notes notes);
-
-    @Select("SELECT * FROM NOTES")
-    Notes[] getNoteListings();
+    int insert(Note note);
 
     @Select("SELECT * FROM NOTES WHERE noteid = #{noteId}")
-    static Notes getNote(Integer noteId) {
-        return null;
-    }
-
+    Note getNote(Integer noteId);
 
     @Delete("DELETE FROM NOTES WHERE noteid = #{noteId}")
     void deleteNote(Integer noteId);
 
     @Update("UPDATE NOTES SET title = #{title}, description = #{description} WHERE noteid = #{noteId}")
-    void updateNote(Integer noteId, String title, String description);
+    void updateNote(@Param("noteId") Integer noteId, @Param("title") String title, @Param("description") String description);
 }
