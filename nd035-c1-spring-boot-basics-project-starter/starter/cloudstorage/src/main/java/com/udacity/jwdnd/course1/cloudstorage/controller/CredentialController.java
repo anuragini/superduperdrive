@@ -73,7 +73,10 @@ public class CredentialController {
         String encryptedPassword = encryptionService.encryptValue(password, encodedKey);
 
         // Determine whether to add or update credential
-        if (credentialIdStr.isEmpty()) {
+        //if (credentialIdStr.isEmpty()) {
+        //checking if credentialIdStr is null
+        //Then make a check for the empty string credentialIdStr
+        if (credentialIdStr == null ||  credentialIdStr.isEmpty()){
             credentialServiceManager.addCredential(newUrl, userName, newCredential.getUserName(), encodedKey, encryptedPassword);
         } else {
             Credential existingCredential = getCredential(Integer.parseInt(credentialIdStr));
